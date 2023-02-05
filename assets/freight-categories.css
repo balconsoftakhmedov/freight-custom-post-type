@@ -1,0 +1,41 @@
+.freight-categories-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.freight-category {
+  width: 22%;
+  margin: 1%;
+  text-align: center;
+}
+
+.freight-category img {
+  width: 100%;
+  height: auto; margin-bottom: 10px;
+}
+.category-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.category-item {
+  width: 25%;
+  text-align: center;
+  padding: 10px;
+}
+
+.category-item img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+.freight-category-name {
+  margin-top: 10px;
+}
+
+.Category-label {
+    text-align: center;
+    color: #36c;
+    font-size: 14px;
+}
