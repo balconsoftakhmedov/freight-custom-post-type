@@ -250,3 +250,53 @@ function create_freight_categories() {
 }
 
 add_action( 'init', 'create_freight_categories' );
+function get_freight_taxonomy_list() {
+
+	ob_start();
+	?>
+
+
+	<div id="freight-types-wrapper">
+		<?php
+		$taxonomy = 'freight_types';
+		$terms    = get_terms( array(
+				'taxonomy'   => $taxonomy,
+				'hide_empty' => false,
+				'parent'     => 0
+		) );
+		foreach ( $terms as $term ) {
+			$term_id   = $term->term_id;
+			$term_name = $term->name;
+			?>
+			<button class="freight-type-button"><?php echo $term_name; ?></button>
+			<div class="freight-type-subcategories">
+				<?php
+				$sub_terms = get_terms( array(
+						'taxonomy'   => $taxonomy,
+						'hide_empty' => false,
+						'parent'     => $term_id
+				) );
+				foreach ( $sub_terms as $sub_term ) {
+					$sub_term_id   = $sub_term->term_id;
+					$sub_term_name = $sub_term->name;
+					?>
+					<button class="freight-type-subcategory"><?php echo $sub_term_name; ?></button>
+					<?php
+				}
+				?>
+			</div>
+			<?php
+		}
+		?>
+
+	</div>
+
+
+	<?php
+	wp_reset_postdata();
+	$output = ob_get_clean();
+
+	return $output;
+}
+
+add_shortcode( 'freight_taxonomy_list', 'get_freight_taxonomy_list' );
