@@ -268,7 +268,7 @@ function get_freight_taxonomy_list() {
 			$term_id   = $term->term_id;
 			$term_name = $term->name;
 			?>
-			<button class="freight-type-button"><?php echo $term_name; ?></button>
+			<button class="freight-type-button" data-category_id="<?php esc_attr_e( $term_id ); ?>"><?php echo $term_name; ?></button>
 			<div class="freight-type-subcategories">
 				<?php
 				$sub_terms = get_terms( array(
@@ -280,7 +280,7 @@ function get_freight_taxonomy_list() {
 					$sub_term_id   = $sub_term->term_id;
 					$sub_term_name = $sub_term->name;
 					?>
-					<button class="freight-type-subcategory"><?php echo $sub_term_name; ?></button>
+					<button class="freight-type-subcategory" data-subcategory_id="<?php esc_attr_e( $sub_term_id ); ?>"><?php echo $sub_term_name; ?></button>
 					<?php
 				}
 				?>
@@ -290,7 +290,10 @@ function get_freight_taxonomy_list() {
 		?>
 
 	</div>
-
+	<input type="hidden" id="category_name" name="category_name"/>
+	<input type="hidden" id="subcategory_name" name="subcategory_name"/>
+	<input type="hidden" id="category_id" name="category_id"/>
+	<input type="hidden" id="subcategory_id" name="subcategory_id"/>
 
 	<?php
 	wp_reset_postdata();
